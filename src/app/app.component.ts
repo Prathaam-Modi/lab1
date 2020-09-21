@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-first-app';
+  count:number=3;
+  name:string='SMIT';
+
+  listOfCars = ['BMW','Mercedes','Audi']
+  
+  increamentCounter(){
+    this.count++;
+  }
+  decreamentCounter(){
+    this.count--;
+  }
 }
