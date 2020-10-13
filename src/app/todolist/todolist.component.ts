@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class TodolistComponent implements OnInit {
 
   employeeDetails = [
-    {id:1, name:'A',department:'CSE'},
-    {id:2, name:'B',department:'ME'},
-    {id:3, name:'C',department:'ECE'}
+    {id:1, name:'A',department:'CSE',doj:'12th aug 2020'},
+    {id:2, name:'B',department:'ME',doj:'7th aug 2018'},
+    {id:3, name:'C',department:'ECE',doj:'15th aug 2019'}
   ]
   constructor() { }
 
