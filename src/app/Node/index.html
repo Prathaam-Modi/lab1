@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<!--
+NAME: Prathaam Modi
+REG NO.: 201800651
+ROLL NO.: 62
+SEC: B
+SEM: 5th
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CALCULATOR</title>
+<style>
+body {
+text-align: center;
+font-family: Calibri, Noto Sans, DejaVu Sans;
+font-size: 30px;
+}
+.fg {
+max-width: 600px;
+margin: auto;
+padding: 10px 10px 10px 10px;
+border-radius: 3px;
+background-color: #07b8be;
+}
+.calc {
+background-color: white;
+padding: 10px 10px 10px 10px;
+border-radius: 3px;
+max-width: 200px;
+margin: auto;
+}
+.calc-disp {
+overflow-x: hidden;
+padding: 5px 5px 5px 5px;
+border:1px solid black;
+border-radius: 2px;
+min-height: 20px;
+max-width: 100%;
+background: white;
+margin: 2px 2px 20px 2px;
+}
+.button {
+min-width: 20px;
+min-height: 20px;
+border-radius: 2px;
+text-align: center;
+font-weight: bold;
+padding: 5px 5px 5px 5px;
+color: white;
+background-color: #b4b4b4;
+border: none;
+width: 100%;
+}
+.button:hover {
+background-color: #07b8be;
+}
+.button:active {
+background-color: #8cfff5;
+}
+.res {
+min-width: 30px;
+min-height: 30px;
+margin-bottom: 10px;
+border-radius: 2px;
+font-weight: bold;
+padding: 5px 5px 5px 5px;
+color: white;
+background-color: #b4b4b4;
+border: 1px solid black;
+width: 100%;
+box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+ <div class="fg">
+ <h1><b>CALCULATOR</b></h1>
+ <form target="" method="post">
+ <table class="calc" align="center">
+ <tr align="center">
+ <td colspan="4"><div class="res">{{RESULT}}</div></td>
+ </tr>
+ <tr>
+ <td colspan="2">
+ <input type="text" name="val1" value="{{VALUE1}}" clas
+s="calc-disp"></input>
+ </td>
+ <td colspan="2">
+    <input type="text" name="val2" value="{{VALUE2}}" clas
+   s="calc-disp"></input>
+    </td>
+    </tr>
+    <tr class="pad">
+    <td><input type="submit" name="oper" value="+" class="butt
+   on" /></td>
+    <td><input type="submit" name="oper" value="-
+   " class="button" /></td>
+    <td><input type="submit" name="oper" value="*" class="butt
+   on" /></td>
+    <td><input type="submit" name="oper" value="/" class="butt
+   on" /></td>
+    </tr>
+    </table>
+    </form>
+    </div>
+   </body>
+   </html>

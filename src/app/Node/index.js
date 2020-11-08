@@ -1,34 +1,51 @@
-const http = require("http");  
-const msg=require('./helper')
-
-const server = http.createServer((req, res) => {
-
-    if(req.url === "/"){
-        res.write(msg.hi);
-        res.end();
-    } 
-    if(req.url === "/prod"){
-        let num1 = parseFloat(res.write('Enter first number: '));
-        let num2 = parseFloat(res.write('Enter second number: '));
-        let num = msg.mul(num1, num2);
-        res.write(num);
-        res.end();
-    }
-    if(req.url === "/add"){
-        let num = msg.sum(3, 7);
-        res.write(num);
-        res.end();
-    }
-    if(req.url === "/sub"){
-        let num = msg.diff(3, 7);
-        res.write(num);
-        res.end();
-    }
-    if(req.url === "/div"){
-        let num = msg.divide(3, 7);
-        res.write(num);
-        res.end();
-    } 
-});
-
-server.listen(3000);
+add = require('./add.js')
+sub = require('./sub.js')
+mul = require('./mul.js')
+div = require('./div.js')
+var express = require('express')
+const fs = require('fs');
+var html = ""
+var result = "="
+var val1 = 0
+var val2 = 0
+fs.readFile('./index.html', (err, data) => {
+if (err) {
+console.log("Error: Could not read file.")
+throw err
+}
+html = data.toString()
+})
+const server = express()
+server.use(express.urlencoded({
+extended: true
+}))
+function template(html, result, val1, val2) {
+return html.replace('{{RESULT}}', result)
+.replace('{{VALUE1}}', val1)
+.replace('{{VALUE2}}', val2)
+}
+function operate(oper, val1, val2) {
+switch (oper) {
+case '+':
+return add(val1, val2)
+case '-':
+return sub(val1, val2)
+case '*':
+return mul(val1, val2)
+case '/':
+return div(val1, val2)
+}
+}
+server.get('/', (req, res) => {
+res.writeHeader(200, {"Content-Type": "text/html"})
+res.write(template(html, result, val1, val2))
+})
+server.post('/', (req, res) => {
+res.writeHeader(200, {"Content-Type": "text/html"})
+res.write(template(html,
+req.body.val1 + " " + req.body.oper + " " + req.body.val2 + " = " +
+operate(req.body.oper, parseFloat(req.body.val1),
+parseFloat(req.body.val2)),
+req.body.val1, req.body.val2))
+})
+server.listen(3000)
